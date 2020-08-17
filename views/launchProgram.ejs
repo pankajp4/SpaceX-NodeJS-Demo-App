@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="utf-8">
+	<title><%= title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+	<div class="body-wrapper">
+		<div class="clearfix">
+			<h1 class="page-title">Space X Launch Programs</h1>
+		</div>
+		<section>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="clearfix filter-area col col-lg-2 col-md-3 col-12">
+						<div class="filter-section">
+							<h3 class="label-heading">Filters</h3>
+							<div class="filter-wrapper">
+								<div class="filter-year clearfix">
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<p class="fields-label">Launch Year</p>
+										</div>
+									</div>
+									<div class="clearfix fields-value">
+										<div class="row">
+											<% for(let year = 2006; year <= 2020; year++) { %>
+												<div class="col-md-6 col-xs-6 col-6">
+													<a href="<%= getRedirectUrl('launch_year') + '&launch_year=' + year %>" class="<%= (appliedFilters.launch_year == year) ? "active" : "" %>"><%= year %></a>
+												</div>
+											<% }; %>
+										</div>
+									</div>
+								</div>
+								<div class="filter-successful-launch clearfix">
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<p class="fields-label">Successful Launch</p>
+										</div>
+									</div>
+									<div class="clearfix fields-value">
+										<div class="row">
+											<div class="col-md-6 col-xs-6 col-6">
+												<a href="<%= getRedirectUrl('launch_success') + '&launch_success=true' %>" class="<%= (appliedFilters.launch_success == 'true') ? "active" : "" %>">True</a>
+											</div>
+											<div class="col-md-6 col-xs-6 col-6">
+												<a href="<%= getRedirectUrl('launch_success') + '&launch_success=false' %>" class="<%= (appliedFilters.launch_success == 'false') ? "active" : "" %>">False</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="filter-successful-landing clearfix">
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<p class="fields-label">Successful Landing</p>
+										</div>
+									</div>
+									<div class="clearfix fields-value">
+										<div class="row">
+											<div class="col-md-6 col-xs-6 col-6">
+												<a href="<%= getRedirectUrl('land_success') + '&land_success=true' %>" class="<%= (appliedFilters.land_success == 'true') ? "active" : "" %>">True</a>
+											</div>
+											<div class="col-md-6 col-xs-6 col-6">
+												<a href="<%= getRedirectUrl('land_success') + '&land_success=false' %>" class="<%= (appliedFilters.land_success == 'false') ? "active" : "" %>">False</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="filter-successful-landing clearfix">
+									<div class="row">
+										<div class="col-md-12 text-center">
+											<p class="fields-label">Clear Filters</p>
+										</div>
+									</div>
+									<div class="clearfix fields-value">
+										<div class="row">
+											<div class="col-md-12 col-xs-12 col-12">
+												<a href="<%= getRedirectUrl('clear_all') %>">Clear All</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix col content-area">
+						<div class="row">
+						<% if(Object.keys(errors).length === 0) { %>
+							<% satLaunchData.forEach(function (lData) { %>
+							<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+								<div class="product-listing clearfix">
+									<div class="product-image">
+										<img class="img-responsive"
+											src="/assets/images<%= lData.flight_image %>"
+											alt="<%= lData.mission_name %>">
+									</div>
+									<div class="product-detail">
+										<h4 class="product-name"><%= lData.mission_name %> #<%= lData.flight_number %></h4>
+										<div class="mission-detail">
+											<strong>Mission Ids:</strong>
+											<ul>
+												<% lData.mission_ids.forEach(function (mission_id) { %>
+													<li><%= mission_id %></li>
+												<% }); %>
+											</ul>
+										</div>
+										<div class="launch-year-detail">
+											<strong>Launch Year: </strong><span class="pl-1"><%= lData.launch_year %></span>
+										</div>
+										<div class="successful-launch-detail">
+											<strong>Successful Launch: </strong><span class="pl-1"><%= lData.launch_success %></span>
+										</div>
+										<div class="successful-landing-detail">
+											<strong>Successful Landing: </strong><span class="pl-1"><%= lData.launch_landing %></span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% }); %>
+							<% } else { %>  
+								<div class="col-md-9 col-xs-9 col-9 error-container">
+									<strong><%= errors.message %></strong> (in query string)
+									<ul>
+										<% errors.data.forEach(function (errObj) { %>
+											<li><%= errObj.msg %></li>
+										<% }); %>
+									</ul>
+								</div>
+							<% } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><strong>Developed By:</strong><span class="pl-1">Pankal Pandey</span></p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

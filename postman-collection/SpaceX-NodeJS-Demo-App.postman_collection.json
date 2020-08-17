@@ -1,0 +1,259 @@
+{
+	"info": {
+		"_postman_id": "473e90cd-af3b-4760-9dc8-ef216db12705",
+		"name": "SpaceX-NodeJS-Demo-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET: /v3/launches - only limit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/v3/launches?limit=50",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"v3",
+						"launches"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "50"
+						}
+					]
+				},
+				"description": "SpaceX POST API"
+			},
+			"response": []
+		},
+		{
+			"name": "GET: /v3/launches - all filters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/v3/launches?limit=5&launch_success=true&land_success=true&launch_year=2017",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"v3",
+						"launches"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "launch_success",
+							"value": "true"
+						},
+						{
+							"key": "land_success",
+							"value": "true"
+						},
+						{
+							"key": "launch_year",
+							"value": "2017"
+						}
+					]
+				},
+				"description": "SpaceX POST API"
+			},
+			"response": []
+		},
+		{
+			"name": "GET: /v3/launches - limit & launch_success",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/v3/launches?limit=100&launch_success=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"v3",
+						"launches"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "launch_success",
+							"value": "true"
+						}
+					]
+				},
+				"description": "SpaceX POST API"
+			},
+			"response": []
+		},
+		{
+			"name": "GET: /v3/launches - limit & land_success",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/v3/launches?limit=100&land_success=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"v3",
+						"launches"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "land_success",
+							"value": "true"
+						}
+					]
+				},
+				"description": "SpaceX POST API"
+			},
+			"response": []
+		},
+		{
+			"name": "GET: /v3/launches - limit & launch_year",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/v3/launches?limit=100&launch_year=2014",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"v3",
+						"launches"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "100"
+						},
+						{
+							"key": "launch_year",
+							"value": "2014"
+						}
+					]
+				},
+				"description": "SpaceX POST API"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
