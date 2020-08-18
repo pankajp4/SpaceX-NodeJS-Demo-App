@@ -22,14 +22,16 @@ structure easy to understand & maintain. Project is open for suggestions & bugs 
 -   Basic Authentication (JWT based - not checking anything but valid signed JWT token is required
     to call APIs)
 -   JWT Tokens, make requests with a token with `Authorization` header with value `Bearer yourToken`.
--   Pre-defined response helper with proper status, message & http response codes.
--   Included CORS.
+-   Pre-defined `response helper` with proper status, message & http response codes.
+-   Pre-defined `APICall helper` with promise.
+-   Included CORS. (only configured not in use)
 -    **SpaceX** API with **GET** operations.
--   API params validations for all API calls.
--   Included API collection for Postman.
+-   API `params validations` for all API calls.
+-   Included API `collection for Postman`.
 -   Light-weight & well documented project.
--   Test cases with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
--   Linting with [Eslint](https://eslint.org/).
+-   Test cases with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/), `8 cases` covered.
+-   Linting `(100% covered)` with [Eslint](https://eslint.org/).
+-   Build and Packaging with [Grunt](https://gruntjs.com/) task runner (uglify, cssmin, imagemin & copy).
 
 ## Software Requirements
 
@@ -62,58 +64,92 @@ npm install
 ```sh
 ├── bin
 │   └── www
-├── controllers
-│   ├── SpaceXController.js
-├── helpers
-│   ├── APICallHelper.js
-│   ├── apiResponseHelper.js
-│   ├── satLaunchHelper.js
-├── middlewares
-│   ├── jwt.js
-├── models
-│   ├── launchDummyData.json
+├── build (production reaqdy code will be here)
 ├── postman-collection
-│   ├── SpaceX-NodeJS-Demo-App.postman_collection.json
-├── public
-│   ├── assets
-│       ├── css
-│         └── style.css
-│       ├── icons
-│         └── favicon.ico
-│       ├── images
-│         ├── satellites
-│         ├── DemoSat.png ...etc.
-│       ├── js
-├── routes
-│   ├── api.js
-│   ├── index.js
-│   └── spaceX.js
-│   └── ssr.js
-├── test
-│   ├── spaceX.spec.js
-│   └── testConfig.js
-├── views
-│   ├── partials
-│       ├── filters.ejs
-│       ├── footer.ejs
-│       ├── header.ejs
-│       └── satListing.ejs
-│   ├── utils
-│       └── uiUtils.ejs
-│   ├── filterWithSatListing.js
-│   └── launchProgram.ejs
+│   └── SpaceX-NodeJS-Demo-App.postman_collection.json
+├── src
+│   ├── controllers
+│   │   └── SpaceXController.js
+│   ├── helpers
+│   │   ├── APICallHelper.js
+│   │   ├── apiResponseHelper.js
+│   │   └── satLaunchHelper.js
+│   ├── middlewares
+│   │   └── jwt.js
+│   ├── models
+│   │   └── launchDummyData.json
+│   ├── public
+│   │   ├── assets
+│   │   │   ├── css
+│   │   │   │   └── style.css
+│   │   │   ├── icons
+│   │   │   │   └── favicon.css
+│   │   │   ├── images
+│   │   │   │   ├── satellites
+│   │   │   │   │   ├── DemoSat.png ...etc.
+│   │   │   ├── js
+│   ├── routes
+│   │   ├── api.js
+│   │   ├── index.js
+│   │   ├── spaceX.js
+│   │   └── ssr.js
+│   ├── test
+│   │   ├── spaceX.spec.js
+│   │   └── testConfig.js
+│   ├── views
+│   │   ├── partials
+│   │   │   ├── filters.ejs
+│   │   │   ├── footer.ejs
+│   │   │   ├── header.ejs
+│   │   │   └── satListing.ejs
+│   │   ├── utils
+│   │   │   └── uiUtils.ejs
+│   │   ├── filterWithSatListing.js
+│   │   ├── launchProgram.ejs
+│   ├── app.js
 ├── .env
 ├── .eslintrc.json
 ├── .gitignore
-├── app.js
+├── Gruntfile.js
 ├── package.json
 └── README.md
 ```
 
 
+## How to Build for Production
+
+Grunt task runner with `uglify, cssmin, imagemin & copy` plugin is added. All JS, CSS, Images will be
+minified and put inside `build` folder with similiar directory structure as `src`.
+
+```bash
+npm run build
+```
+
+If everything goes well then you will see below output for `npm run build` command
+
+```bash
+> SpaceX_NodeJS_Demo_App@1.0.0 build /Users/techjini/ProjectData/SpaceX-NodeJS-Demo-App
+> grunt --force
+
+Running "uglify:build" (uglify) task
+>> 12 files created 20.16 kB → 9.96 kB
+
+Running "cssmin:build" (cssmin) task
+>> 1 file created. 2.48 kB → 1.66 kB
+
+Running "imagemin:build" (imagemin) task
+Minified 4 images (saved 343 kB - 25.3%)
+
+Running "copy:build" (copy) task
+Created 2 directories, copied 8 files
+
+Done.
+```
+
+
 ## How to Run
 
-### Running Structured API server locally on PORT - 3001
+### Running App for development (with auto refresh) on PORT - 3001
 
 ```bash
 npm run dev
@@ -134,6 +170,21 @@ If everything goes well then you will see below output for `npm run dev` command
 Press CTRL + C to stop the process.
 ```
 
+### Running App for production on PORT - 3001
+
+```bash
+npm run start
+```
+
+If everything goes well then you will see below output for `npm run start` command
+
+```bash
+> SpaceX_NodeJS_Demo_App@1.0.0 start /Users/techjini/ProjectData/SpaceX-NodeJS-Demo-App
+> node ./bin/www
+
+Press CTRL + C to stop the process.
+```
+
 
 ## Tests
 
@@ -142,18 +193,64 @@ Press CTRL + C to stop the process.
 ```sh
 ├── Covered API test cases:
 │   ├── /GET SpaceX launches API - Authorization
+│   ├── /GET SpaceX launches API - Validations
 │   ├── /GET SpaceX launches API - Success
-│   └── /GET SpaceX launches API - Validations
+│   ├── /GET SpaceX launches API - limit filter Success
+│   ├── /GET SpaceX launches API - launch_year filter Success
+│   ├── /GET SpaceX launches API - launch_success filter Success
+│   ├── /GET SpaceX launches API - land_success filter Success
+│   └── /GET SpaceX launches API - all filter Success
 ```
 
 ### Running Test Cases
 
 ```bash
-npm test
+npm run test
 ```
 
-If everything goes well then you will see below output for `npm test` command
+If everything goes well then you will see below output for `npm run test` command
+```bash
+> SpaceX_NodeJS_Demo_App@1.0.0 test /Users/techjini/ProjectData/SpaceX-NodeJS-Demo-App
+> nyc _mocha 'src/test/**/*spec.js' --timeout 10000 --exit --report lcovonly -- -R spec
 
+  SpaceX-NodeJS-Demo-App Automation Test Result:
+    SpaceX /GET API Tests:
+      ✓ It should send Authorization error for spaceX-launches GET call
+      ✓ It should return validation errors for SpaceX launches GET call.
+      ✓ It should generate SpaceX launches successfully for GET call.
+      ✓ It should match limit param with data count for SpaceX launches GET call.
+      ✓ It should match launch_year param with responses for SpaceX launches GET call.
+      ✓ It should match launch_success param with responses for SpaceX launches GET call.
+      ✓ It should match land_success param with responses for SpaceX launches GET call.
+      ✓ It should match all param with responses for SpaceX launches GET call.
+
+
+  8 passing (63ms)
+
+-----------------------|---------|----------|---------|---------|-------------------------
+File                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s       
+-----------------------|---------|----------|---------|---------|-------------------------
+All files              |   85.28 |    38.89 |   55.81 |   85.57 |                         
+ src                   |   85.29 |       25 |       0 |   85.29 |                         
+  app.js               |   85.29 |       25 |       0 |   85.29 | 19,44,57,62-63          
+ src/controllers       |   92.86 |      100 |     100 |   92.86 |                         
+  SpaceXController.js  |   92.86 |      100 |     100 |   92.86 | 51                      
+ src/helpers           |   59.38 |    78.57 |   38.46 |   58.62 |                         
+  APICallHelper.js     |   33.33 |      100 |       0 |   33.33 | 14-28                   
+  apiResponseHelper.js |   55.56 |      100 |   33.33 |   55.56 | 10-14,44-48,60-64,94-98 
+  satLaunchHelper.js   |    87.5 |    78.57 |     100 |     100 | 12                      
+ src/middlewares       |     100 |      100 |     100 |     100 |                         
+  jwt.js               |     100 |      100 |     100 |     100 |                         
+ src/routes            |   70.59 |        0 |       0 |   70.59 |                         
+  api.js               |     100 |      100 |     100 |     100 |                         
+  index.js             |   63.64 |        0 |       0 |   63.64 | 13-28                   
+  spaceX.js            |     100 |      100 |     100 |     100 |                         
+  ssr.js               |   53.85 |        0 |       0 |   53.85 | 13-31                   
+ src/test              |     100 |      100 |     100 |     100 |                         
+  spaceX.spec.js       |     100 |      100 |     100 |     100 |                         
+  testConfig.js        |     100 |      100 |     100 |     100 |                         
+-----------------------|---------|----------|---------|---------|-------------------------
+```
 
 ## ESLint
 

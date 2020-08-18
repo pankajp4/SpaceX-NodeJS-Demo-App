@@ -12,8 +12,8 @@ exports.getLaunchData = (launchDummyData, filters) => {
 	if (typeof launchDummyData !== "object" && launchDummyData.length > 0 && typeof filters !== "object") return [];
 
 	// apply filters on dummy data to fetch all matching launch data
-	let responseToSend = launchDummyData.filter((lData) => ((filters.launch_success ? (filters.launch_success === lData.launch_success) : true)
-		&& (filters.land_success ? (filters.land_success === lData.launch_landing) : true)
+	let responseToSend = launchDummyData.filter((lData) => (((filters.launch_success !== undefined) ? (filters.launch_success === lData.launch_success) : true)
+		&& ((filters.land_success !== undefined) ? (filters.land_success === lData.launch_landing) : true)
 		&& (filters.launch_year ? (filters.launch_year === lData.launch_year) : true)));
 
 	// apply limit filter on top of filtered data

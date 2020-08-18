@@ -2,6 +2,7 @@
 const express = require("express");
 const queryString = require("querystring");
 const APICallHelper = require("../helpers/APICallHelper");
+require("dotenv").config();
 
 // get express router object
 const router = express.Router();

@@ -30,7 +30,8 @@ app.use(cookieParser());
 
 // middleware to serve files from specified directory with alias
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+app.set("views", path.join(__dirname, "/views"));
+app.use("/css", express.static(__dirname + "/../node_modules/bootstrap/dist/css"));
 
 // specify view engine to be used - it will by default load files from 'views' directory
 app.set("view engine", "ejs");

@@ -1,7 +1,12 @@
 #!/usr/bin/env node
+// import all library/packages required for this module/file
+require("dotenv").config();
 
 // import all library/packages required for this module/file
-const app = require("../app");
+let app;
+if (process.env.NODE_ENV === "prod") app = require("../build/app");
+else app = require("../src/app");
+
 const debug = require("debug")("SpaceX-NodeJS-Demo-App:server");
 const http = require("http");
 

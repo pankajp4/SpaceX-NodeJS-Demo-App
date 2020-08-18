@@ -1,3 +1,6 @@
+// import all library/packages required for this module/file
+require("dotenv").config();
+
 // env variable for automated test, it to "test"
 process.env.NODE_ENV = "test";
 

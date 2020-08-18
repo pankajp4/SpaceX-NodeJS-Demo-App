@@ -1,5 +1,6 @@
 // import all library/packages required for this module/file
 const jwt = require("express-jwt");
+require("dotenv").config();
 
 // get JWT SECRET from environment file
 const secret = process.env.JWT_SECRET;
