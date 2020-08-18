@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 	};
 
 	// call helper function to get promise
-	APICallHelper.makeAPICall("GET", `http://localhost:${process.env.PORT || "4000"}/v3/launches?limit=100&${queryString.stringify(dataBucket.appliedFilters || "")}`)
+	APICallHelper.makeAPICall("GET", `${req.protocol}://${req.headers.host}/v3/launches?limit=100&${queryString.stringify(dataBucket.appliedFilters || "")}`)
 		.then(response => {
 			// success from API - specify ejs file and send all data to the view
 			res.render("launchProgram", { ...dataBucket, satLaunchData: response.data && response.data.data });
