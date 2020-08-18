@@ -78,6 +78,8 @@ npm install
 │   ├── assets
 │       ├── css
 │         └── style.css
+│       ├── icons
+│         └── favicon.ico
 │       ├── images
 │         ├── satellites
 │         ├── DemoSat.png ...etc.
@@ -86,10 +88,19 @@ npm install
 │   ├── api.js
 │   ├── index.js
 │   └── spaceX.js
+│   └── ssr.js
 ├── test
 │   ├── spaceX.spec.js
 │   └── testConfig.js
 ├── views
+│   ├── partials
+│       ├── filters.ejs
+│       ├── footer.ejs
+│       ├── header.ejs
+│       └── satListing.ejs
+│   ├── utils
+│       └── uiUtils.ejs
+│   ├── filterWithSatListing.js
 │   └── launchProgram.ejs
 ├── .env
 ├── .eslintrc.json
@@ -130,9 +141,9 @@ Press CTRL + C to stop the process.
 
 ```sh
 ├── Covered API test cases:
-│   └── /GET SpaceX - Authorization
-│   └── /GET SpaceX - Success
-│   └── /GET SpaceX - Validations
+│   ├── /GET SpaceX launches API - Authorization
+│   ├── /GET SpaceX launches API - Success
+│   └── /GET SpaceX launches API - Validations
 ```
 
 ### Running Test Cases
