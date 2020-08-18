@@ -1,0 +1,45 @@
+<script defer>
+	// used to handle filter change and route change
+	handleFilterChange = (filterType, filterVal) => {
+		let urlToRedirect = "";
+
+		if (filterType !== 'clear_all') {
+			let currentFilters = location.search.substring(1) || "";
+
+			// create object of query string values
+			currentFilters = currentFilters ? JSON.parse('{"' + decodeURI(currentFilters).replace(/"/g,
+				'\\"').replace(/&/g,
+				'","').replace(/=/g, '":"') + '"}') : {};
+			currentFilters[filterType] = filterVal;
+
+			// prepare query string
+			urlToRedirect = new URLSearchParams(currentFilters).toString();
+		}
+
+		// fetch SSR content for applied filters 
+		fetchLaunches(urlToRedirect);
+
+		// push new route into history to update browser url
+		history.pushState({}, "Filtered Data", urlToRedirect ? `/?${urlToRedirect}` : "/");
+	}
+
+	// used to fetch HTML content from ejs ssr
+	fetchLaunches = (appliedFilters = "") => {
+		const url =
+			`http://localhost:3001/ssr/getFilteredListing/?${appliedFilters ? `&${appliedFilters}` : ""}`;
+		const headers = {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw",
+		}
+
+		fetch(url, { method: 'GET', headers: headers })
+			.then(res => res.text())
+			.then((resHTML) => {
+				document.getElementById("filter-and-sat-listing-area").innerHTML = resHTML;
+			})
+			.catch((error) => {
+				// not handling it for now
+				console.error(error);
+			});
+	}
+</script>

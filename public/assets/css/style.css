@@ -1,6 +1,6 @@
-/* customised styling based on bootstrap */
+/* customised styling for bootstrap */
 body {
-    background-color: #f2f2f2;
+    background-color: #F2F2F2;
     padding: 0;
 }
 
@@ -12,14 +12,16 @@ body {
 
 h1.page-title {
     margin-top: 15px;
-    font-size: 20px;
+    font-size: 30px;
     padding: 0 15px;
+    font-weight: bold;
 }
 
 .filter-section {
     padding: 0 15px 50px 15px;
     background: #fff;
     margin-bottom: 25px;
+    border-radius: 6px;
 }
 
 .filter-area {
@@ -34,7 +36,7 @@ h3.label-heading {
 }
 
 p.fields-label {
-    color: gray;
+    color: #151515;
     font-size: 16px;
     position: relative;
     margin-top: 10px;
@@ -52,7 +54,7 @@ p.fields-label:after {
 }
 
 .fields-value a {
-    background: #c5e09b;
+    background: #C4DF9C;
     padding: 2px 5px;
     display: block;
     color: #000;
@@ -65,12 +67,12 @@ p.fields-label:after {
 }
 
 .fields-value a.active {
-    background: #7bba01
+    background: #7CB900
 }
 
 .fields-value a:hover {
     text-decoration: none;
-    background: #7bba01;
+    background: #7CB900;
 }
 
 .product-listing {
@@ -78,6 +80,11 @@ p.fields-label:after {
     background: #ffffff;
     margin-bottom: 15px;
     border-radius: 6px;
+}
+
+.pl-1,
+.mission-detail li {
+    color: #656485;
 }
 
 .img-responsive {
@@ -94,8 +101,8 @@ p.fields-label:after {
     display: block;
 }
 
-h4.product-name {
-    color: #535a8b;
+h2.product-name {
+    color: #474984;
     font-weight: bold;
     font-size: 18px;
 }

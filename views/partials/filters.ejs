@@ -1,0 +1,74 @@
+<div class="filter-section">
+  <h3 class="label-heading">Filters</h3>
+  <div class="filter-wrapper">
+    <div class="filter-year clearfix">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="fields-label">Launch Year</p>
+        </div>
+      </div>
+      <div class="clearfix fields-value">
+        <div class="row">
+          <% for(let year = 2006; year <= 2020; year++) { %>
+          <div class="col-md-6 col-xs-6 col-6">
+            <a onclick="handleFilterChange('launch_year', <%= year %>)"
+              class="<%= (appliedFilters.launch_year == year) ? "active" : "" %>"><%= year %></a>
+          </div>
+          <% }; %>
+        </div>
+      </div>
+    </div>
+    <div class="filter-successful-launch clearfix">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="fields-label">Successful Launch</p>
+        </div>
+      </div>
+      <div class="clearfix fields-value">
+        <div class="row">
+          <div class="col-md-6 col-xs-6 col-6">
+            <a onclick="handleFilterChange('launch_success', true)"
+              class="<%= (appliedFilters.launch_success == 'true') ? "active" : "" %>">True</a>
+          </div>
+          <div class="col-md-6 col-xs-6 col-6">
+            <a onclick="handleFilterChange('launch_success', false)"
+              class="<%= (appliedFilters.launch_success == 'false') ? "active" : "" %>">False</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-successful-landing clearfix">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="fields-label">Successful Landing</p>
+        </div>
+      </div>
+      <div class="clearfix fields-value">
+        <div class="row">
+          <div class="col-md-6 col-xs-6 col-6">
+            <a onclick="handleFilterChange('land_success', true)"
+              class="<%= (appliedFilters.land_success == 'true') ? "active" : "" %>">True</a>
+          </div>
+          <div class="col-md-6 col-xs-6 col-6">
+            <a onclick="handleFilterChange('land_success', false)"
+              class="<%= (appliedFilters.land_success == 'false') ? "active" : "" %>">False</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="filter-successful-landing clearfix">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p class="fields-label">Clear Filters</p>
+        </div>
+      </div>
+      <div class="clearfix fields-value">
+        <div class="row">
+          <div class="col-md-12 col-xs-12 col-12">
+            <a onclick="handleFilterChange('clear_all')">Clear All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@
  * 
  * @returns {Array<Number|String>} array of object containg launch details
  */
-exports.getLaunchData = function (launchDummyData, filters) {
+exports.getLaunchData = (launchDummyData, filters) => {
 	// basic validation on function param
 	if (typeof launchDummyData !== "object" && launchDummyData.length > 0 && typeof filters !== "object") return [];
 

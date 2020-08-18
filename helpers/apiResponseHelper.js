@@ -6,7 +6,7 @@
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.success = function (res, msg) {
+exports.success = (res, msg) => {
 	const data = {
 		status: true,
 		message: msg
@@ -23,7 +23,7 @@ exports.success = function (res, msg) {
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.successWithData = function (res, msg, data) {
+exports.successWithData = (res, msg, data) => {
 	const resData = {
 		status: true,
 		message: msg,
@@ -40,7 +40,7 @@ exports.successWithData = function (res, msg, data) {
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.error = function (res, msg) {
+exports.error = (res, msg) => {
 	const data = {
 		status: false,
 		message: msg,
@@ -56,7 +56,7 @@ exports.error = function (res, msg) {
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.notFound = function (res, msg) {
+exports.notFound = (res, msg) => {
 	const data = {
 		status: false,
 		message: msg,
@@ -73,7 +73,7 @@ exports.notFound = function (res, msg) {
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.validationErrorWithData = function (res, msg, data) {
+exports.validationErrorWithData = (res, msg, data) => {
 	const resData = {
 		status: false,
 		message: msg,
@@ -90,7 +90,7 @@ exports.validationErrorWithData = function (res, msg, data) {
  * 
  * @returns {Response} http response with status, msg and optional data
  */
-exports.unauthorized = function (res, msg) {
+exports.unauthorized = (res, msg) => {
 	const data = {
 		status: false,
 		message: msg,

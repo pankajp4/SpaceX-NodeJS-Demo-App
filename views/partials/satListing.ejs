@@ -1,0 +1,43 @@
+<div class="row">
+  <% if (Object.keys(errors).length === 0) { %>
+  <% satLaunchData.forEach((lData) => { %>
+  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+    <div class="product-listing clearfix">
+      <div class="product-image">
+        <img class="img-responsive" src="/assets/images<%= lData.flight_image %>"
+          alt="<%= lData.mission_name %>">
+      </div>
+      <div class="product-detail">
+        <h2 class="product-name"><%= lData.mission_name %> #<%= lData.flight_number %></h2>
+        <div class="mission-detail">
+          <strong>Mission Ids:</strong>
+          <ul>
+            <% lData.mission_ids.forEach((mission_id) => { %>
+            <li><%= mission_id %></li>
+            <% }); %>
+          </ul>
+        </div>
+        <div class="launch-year-detail">
+          <strong>Launch Year: </strong><span class="pl-1"><%= lData.launch_year %></span>
+        </div>
+        <div class="successful-launch-detail">
+          <strong>Successful Launch: </strong><span class="pl-1"><%= lData.launch_success %></span>
+        </div>
+        <div class="successful-landing-detail">
+          <strong>Successful Landing: </strong><span class="pl-1"><%= lData.launch_landing %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% }); %>
+  <% } else { %>
+  <div class="col-md-9 col-xs-9 col-9 error-container">
+    <strong><%= errors.message %></strong> (in query string)
+    <ul>
+      <% errors.data.forEach((errObj) => { %>
+      <li><%= errObj.msg %></li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+</div>

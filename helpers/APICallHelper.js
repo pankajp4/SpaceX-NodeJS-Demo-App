@@ -10,7 +10,7 @@ const axios = require("axios");
  * 
  * @returns {Promise} a promise for caller
  */
-exports.makeAPICall = function (type, apiURL) { // , optionalData = {} can be used to send optional data like headers etc
+exports.makeAPICall = (type, apiURL) => { // , optionalData = {} can be used to send optional data like headers etc
 	return new Promise((resolve, reject) => {
 		axios({
 			method: type,
@@ -19,11 +19,11 @@ exports.makeAPICall = function (type, apiURL) { // , optionalData = {} can be us
 				Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw",
 			}
 		})
-			.then(function (response) {
+			.then((response) => {
 				// success
 				resolve(response);
 			})
-			.catch(function (error) {
+			.catch((error) => {
 				// failure
 				reject(error.response);
 			});

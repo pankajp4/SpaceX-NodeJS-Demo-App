@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 require("dotenv").config();
 const indexRouter = require("./routes/index");
+const ssrRouter = require("./routes/ssr");
 const apiRouter = require("./routes/api");
 const apiResponseHandler = require("./helpers/apiResponseHelper");
 const cors = require("cors");
@@ -27,8 +28,9 @@ app.use(express.urlencoded({ extended: false }));
 // cookie parser middleware - not using it
 app.use(cookieParser());
 
-// middleware to serve files from specified directory
+// middleware to serve files from specified directory with alias
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
 
 // specify view engine to be used - it will by default load files from 'views' directory
 app.set("view engine", "ejs");
@@ -45,8 +47,9 @@ app.engine("ejs", (path, data, cb) => {
 app.use(cors());
 
 // supported route prefixes
-app.use("/", indexRouter);
-app.use("/v3/", apiRouter);
+app.use("/", indexRouter); // for UI
+app.use("/ssr", ssrRouter); // for SSR
+app.use("/v3/", apiRouter); // for API
 
 // throw 404 if URL not found
 app.all("*", function(req, res) {
