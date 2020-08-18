@@ -34,9 +34,23 @@ structure easy to understand & maintain. Project is open for suggestions & bugs 
 -   Build and Packaging with [Grunt](https://gruntjs.com/) task runner (uglify, cssmin, imagemin & copy).
 
 
-## Lighthouse Score
+## Continuous Deployment (CD) using [herokuapp](https://herokuapp.com/)
+`develop` branch is set for `Automatic deploys`
 
-[(https://spacex-nodejs-demo-app.herokuapp.com/assets/images/lighthouse-score.png)]
+### App running @ [https://spacex-nodejs-demo-app.herokuapp.com/](https://spacex-nodejs-demo-app.herokuapp.com/)
+
+
+## Lighthouse Score (97.5 out of 100)
+
+### Idividual Scores
+```bash
+Performance: 94
+Accessibility: 96
+Best Practices: 100
+SEO: 100
+```
+
+![Lighthouse Score](https://spacex-nodejs-demo-app.herokuapp.com/assets/images/lighthouse-score.png)
 
 ## Software Requirements
 
