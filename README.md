@@ -36,7 +36,7 @@ structure easy to understand & maintain. Project is open for suggestions & bugs 
 
 ## Lighthouse Score
 
-(https://spacex-nodejs-demo-app.herokuapp.com/assets/images/lighthouse-score.png)
+[(https://spacex-nodejs-demo-app.herokuapp.com/assets/images/lighthouse-score.png)]
 
 ## Software Requirements
 
