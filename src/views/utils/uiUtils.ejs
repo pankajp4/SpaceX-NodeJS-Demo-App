@@ -26,7 +26,7 @@
 	// used to fetch HTML content from ejs ssr
 	fetchLaunches = (appliedFilters = "") => {
 		const url =
-			`http://localhost:3001/ssr/getFilteredListing/?${appliedFilters ? `&${appliedFilters}` : ""}`;
+			`${location.origin}/ssr/getFilteredListing/?${appliedFilters ? `&${appliedFilters}` : ""}`;
 		const headers = {
 			"Content-Type": "application/json",
 			"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJHRVQtRXhwcmVzc0JhY2tlbmQiLCJuYW1lIjoiUGFua2FqIFBhbmRleSIsImlhdCI6MTUxNjIzOTAyMn0.t3P9f1ysZVJhnZYtxeXk0QzqHHgw3YLueoL7dXBSCmw",
