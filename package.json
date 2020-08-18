@@ -31,6 +31,7 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-imagemin": "^4.0.0",
+    "grunt-run": "^0.8.1",
     "mocha": "^8.1.1",
     "nodemon": "^2.0.4",
     "nyc": "^15.1.0"
@@ -38,7 +39,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "build": "grunt --force",
+    "build": "grunt",
     "test": "nyc _mocha 'src/test/**/*spec.js' --timeout 10000 --exit --report lcovonly -- -R spec",
     "lint": "eslint --fix --config .eslintrc.json \"**/*.js\""
   },

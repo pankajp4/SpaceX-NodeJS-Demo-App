@@ -2,6 +2,12 @@ module.exports = function (grunt) {
 	// project configuration with basic tasks
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
+		run: {
+			npm_run_lint: {
+				cmd: "npm",
+				args: ["run", "lint"]
+			}
+		},
 		uglify: {
 			build: {
 				files: [{
@@ -59,7 +65,8 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-cssmin");
 	grunt.loadNpmTasks("grunt-contrib-imagemin");
 	grunt.loadNpmTasks("grunt-contrib-copy");
+	grunt.loadNpmTasks("grunt-run");
 
 	// default task(s).
-	grunt.registerTask("default", ["uglify", "cssmin", "imagemin", "copy"]);
+	grunt.registerTask("default", ["run:npm_run_lint", "uglify", "cssmin", "imagemin", "copy"]);
 };
