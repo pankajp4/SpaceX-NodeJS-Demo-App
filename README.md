@@ -33,6 +33,11 @@ structure easy to understand & maintain. Project is open for suggestions & bugs 
 -   Linting `(100% covered)` with [Eslint](https://eslint.org/).
 -   Build and Packaging with [Grunt](https://gruntjs.com/) task runner (uglify, cssmin, imagemin & copy).
 
+
+## Lighthouse Score
+
+(https://spacex-nodejs-demo-app.herokuapp.com/assets/images/lighthouse-score.png)
+
 ## Software Requirements
 
 -   Node.js **10+**
@@ -252,7 +257,7 @@ All files              |   85.28 |    38.89 |   55.81 |   85.57 |
 -----------------------|---------|----------|---------|---------|-------------------------
 ```
 
-## ESLint
+## ESLint (100% coverage)
 
 ### Running Eslint
 
